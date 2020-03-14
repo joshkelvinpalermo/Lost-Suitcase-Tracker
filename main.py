@@ -4,7 +4,7 @@ from xml.etree import ElementTree
 import requests
 
 #apikey: JNTQivSRb4qxRVbQc5gHCB56M
-#victor'slocation: Latitude: 41.980262, Longitude: -87.668452
+#victorslocation: Latitude: 41.980262, Longitude: -87.668452
 
 url = "http://ctabustracker.com/bustime/map/getBusesForRoute.jsp?route=22"
 
