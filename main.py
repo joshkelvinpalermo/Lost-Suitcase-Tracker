@@ -1,8 +1,8 @@
 import schedule
+import requests
 from datetime import datetime
 from pytz import timezone
 from xml.etree import ElementTree
-import requests
 
 #apikey: JNTQivSRb4qxRVbQc5gHCB56M
 #victorslocation: Latitude: 41.980262, Longitude: -87.668452
@@ -17,15 +17,15 @@ def pullRequests():
     tree = requests.get(url)
     root = ElementTree.fromstring(tree.content)
 
-    for bus in root.findall('bus'):
+    for bus in root.findall(".bus/[dd = 'Northbound']"):
         busid = bus.find("id").text
-        direction = bus.find("dd").text
         latitude = bus.find("lat").text
+        direction = bus.find("dd").text
 
-        print("Bus ID: " + busid, "Latitude: " + latitude)
+        print(direction, "Bus ID: " + busid, "Latitude: " + latitude)
 
 
-schedule.every(3).seconds.do(pullRequests)
+schedule.every(25).seconds.do(pullRequests)
 
 while True:
     schedule.run_pending()
