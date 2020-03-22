@@ -1,11 +1,13 @@
 import schedule
 import requests
+import tkinter
+from tkinter import messagebox
 from geopy import distance
 from datetime import datetime
 from pytz import timezone
 from xml.etree import ElementTree
 
-#apikey: JNTQivSRb4qxRVbQc5gHCB56M
+#CTAapikey: JNTQivSRb4qxRVbQc5gHCB56M
 
 victorsLocation = (41.980262, -87.668452)
 tz = timezone('EST')
@@ -22,16 +24,19 @@ def pullRequests():
         latitude = bus.find('lat').text
         longitude = bus.find('lon').text
         direction = bus.find('dd').text
-        ws = '     '
-
         coordinates = latitude, longitude
+        dist = ("{0:.2f}".format(distance.distance(victorsLocation, coordinates).km))
+        ws = '     '
 
         print("Bus ID: " + busid, ws,
               "Direction: " + direction, ws,
-              "Distance from Victor: " + ("{0:.2f}".format(distance.distance(victorsLocation, coordinates).km)))
+              "Distance from Victor: " + dist + "km")
+
+        if dist >= str(1):
+            messagebox.showinfo("There is a nearby bus!")
 
 
-schedule.every(10).seconds.do(pullRequests)
+schedule.every(5).seconds.do(pullRequests)
 
 while True:
     schedule.run_pending()
