@@ -25,23 +25,24 @@ def pullRequests():
         direction = bus.find('dd').text
         coordinates = latitude, longitude
         dist = ("{0:.2f}".format(distance.distance(victorsLocation, coordinates).km))
+        length = len(root.findall(".bus/[dd = 'Northbound']"))
 
         print("Bus ID: " + busid, ws,
               "Direction: " + direction, ws,
-              "Distance from Victor: " + dist + "km")
+              "Distance from Victor: " + dist + "km"
+              )
 
         if dist <= str(1):
-            displayer = folium.Map(location=coordinates, zoom_start=10)
-            marker = folium.Circle(radius=100, location=coordinates)
+            displayer = folium.Map(location=coordinates, zoom_start=20)
+            marker = folium.Marker(radius=100, location=coordinates, popup=busid)
             marker.add_to(displayer)
-
             displayer.save("my_map.html")
 
             driver = webdriver.Chrome()
             driver.get("file:///C:/Users/imsof/PycharmProjects/bustracker/my_map.html")
 
 
-schedule.every(30).seconds.do(pullRequests)
+schedule.every(10).seconds.do(pullRequests)
 
 while True:
     schedule.run_pending()
