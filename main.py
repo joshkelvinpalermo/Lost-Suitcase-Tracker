@@ -3,17 +3,16 @@ import requests
 import folium
 import branca
 import numpy
+from selenium import webdriver
 from geopy import distance
-from datetime import datetime
-from pytz import timezone
 from xml.etree import ElementTree
 
+driver = webdriver.Chrome()
+driver.get("file:///C:/Users/imsof/PycharmProjects/bustracker/my_map.html")
+
 #CTABusTrackerAPIKey: JNTQivSRb4qxRVbQc5gHCB56M
-#GoogleMapsAPIKey: AIzaSyACQPRJD-2M6kk_6RfUWRUYwOrsFAdZMS8
 
 victorsLocation = (41.980262, -87.668452)
-tz = timezone('EST')
-esttime = datetime.now(tz)
 url = "http://ctabustracker.com/bustime/map/getBusesForRoute.jsp?route=22"
 
 folium_map = folium.Map(location=[41.881832, -87.623177],
