@@ -41,8 +41,8 @@ def pullRequests():
             driver = webdriver.Chrome()
             driver.get("file:///C:/Users/imsof/PycharmProjects/bustracker/my_map.html")
 
-
-schedule.every(10).seconds.do(pullRequests)
+#Change n to your preferred seconds/minutes
+schedule.every(n).seconds.do(pullRequests)
 
 while True:
     schedule.run_pending()
