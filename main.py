@@ -39,10 +39,10 @@ def pullRequests():
             displayer.save("my_map.html")
 
             driver = webdriver.Chrome()
-            driver.get("file:///C:/Users/imsof/PycharmProjects/bustracker/my_map.html")
+            driver.get("file:///C:/Users/imsof/PycharmProjects/lostsuitcasetracker/my_map.html")
 
-#Change n to your preferred seconds/minutes
-schedule.every(n).seconds.do(pullRequests)
+
+schedule.every(45).seconds.do(pullRequests)
 
 while True:
     schedule.run_pending()
