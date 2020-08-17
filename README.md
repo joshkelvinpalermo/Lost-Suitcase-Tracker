@@ -9,12 +9,3 @@ http://ctabustracker.com/bustime/map/getBusesForRoute.jsp?route={route number}
 We need all buses going north bound. Victor’s location is at 41.980262 latitude and -87.668452 longitude.
 
 2.) Create a program/script which monitors the identified buses and reports their current distance from Victor’s office. When the bus gets closer than 1 kilometer, the program must issue an alert by popping up a web-page showing the bus location on a map so that Jerry could meet them and get the suitcase back.
-
-Supposedly you should only have 3 hours to solve his issue but since I’m good you will have 8 hours to solve this.
-
-
-Readings:
-https://developers.google.com/maps/documentation/static-maps/intro#location
-
-Rules & Restrictions:
-None, you can browse the internet all the way!
